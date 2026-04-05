@@ -28,3 +28,5 @@ Sigue estos pasos en tu terminal **UCRT64**:
 3. **Ejecutar el programa:**
    ```bash
    ./build/main_app.exe
+
+### Especificación de problema breve
