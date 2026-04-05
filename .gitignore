@@ -1,0 +1,12 @@
+build/
+bin/
+obj/
+
+.vscode/
+.cache/
+.clangd/
+
+*.exe
+*.o
+*.obj
+*.pdb
