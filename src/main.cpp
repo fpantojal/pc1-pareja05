@@ -1,18 +1,20 @@
-#include <iostream>
-#include <vector>
+#include "vector_adapter.h"
 #include "solution.cpp"
+
+#include <iostream>
 #include <iomanip>
+#include <vector>
 
 void printStats(const BuyAndSellStats& stats, const std::string& method)
 {
     std::cout << method << " - Max Profit: " << stats.maxProfit
-              << ", Comparisons: " << stats.comparisions
+              << ", Comparisons: " << stats.comparisons
               << ", Updates: " << stats.updates << std::endl;
 }
 
 int main()
 {
-    std::vector<int> prices = {7, 1, 5, 3, 6, 4};
+    CC232::vector<int> prices = {7, 1, 5, 3, 6, 4};
 
     BuyAndSellStats optimalStats = maxProfit(prices);
     BuyAndSellStats bruteForceStats = maxProfitBruteForce(prices);
