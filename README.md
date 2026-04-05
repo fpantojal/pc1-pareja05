@@ -59,12 +59,13 @@ En cuanto a su factibilidad, el algoritmo es completamente viable dados los lím
 ### Argumento de finitud
 El algoritmo es finito y está garantizado a terminar porque se basa en un único bucle que recorre de forma secuencial el arreglo de entrada `prices`. La longitud de este arreglo, digamos $n$, es finita y estrictamente conocida de antemano. En cada iteración, el índice de control avanza positivamente paso a paso, sin condiciones que permitan retroceder o estancarse en el mismo elemento. Adicionalmente, dentro del bucle solo se realizan operaciones aritméticas básicas y asignaciones condicionales que operan en tiempo constante ($O(1)$) y no contienen llamadas recursivas ni otros bucles que dependan de cambios de estado inciertos. Por consiguiente, tras procesar el elemento $n$, la ejecución del ciclo concluye ineludiblemente, garantizando que el algoritmo termine en un número finito de pasos.
 
-### Invariante de bucle y Correctitud
-Para garantizar la correctitud formal del algoritmo, podemos definir el siguiente **invariante de bucle**. Al finalizar la iteración $i$ (donde $i$ va desde $0$ hasta $n-1$), se mantienen verdaderas las siguientes dos condiciones:
+### Invariante y Monotonicidad
+Con prespecto a invariante, al finalizar cada iteración i, la variable `maxProfit` contiene la ganancia máxima encontrada hasta ese momento entre todos los pares (compra, venta) donde la compra ocurre en una posición anterior a i.
 
-1. La variable del precio mínimo (`min_price`) contiene el valor más bajo encontrado en el subarreglo evaluado hasta el momento: `prices[0...i]`.
-2. La variable de la ganancia máxima (`max_profit`) contiene la mayor ganancia que se puede obtener realizando una sola compra y una sola venta considerando únicamente los días hasta el índice $i$ (subarreglo `prices[0...i]`).
+En cuanto a monotonicidad del algoritmo se cumple en dos variables clave. Por un lado, el precio mínimo acumulado es no creciente, porque en cada iteración se conserva el menor valor observado (`buy`) hasta ese punto. Por otro lado, la ganancia máxima acumulada es no decreciente, ya que solo se actualiza cuando aparece una ganancia mayor. Estas dos propiedades garantizan estabilidad durante el recorrido y aseguran que, al finalizar, se obtiene correctamente el máximo beneficio posible.
 
-**Inicialización:** Antes de entrar al bucle, `min_price` es infinito (o el primer elemento) y `max_profit` es 0, lo cual es lógicamente correcto para un arreglo de cero elementos procesados.
-**Mantenimiento:** Durante el paso $i+1$, si `prices[i+1]` es menor que `min_price`, se actualiza. Si `prices[i+1] - min_price` es mayor que `max_profit`, se actualiza. Por lo tanto, el invariante se cumple para el subarreglo `prices[0...i+1]`.
-**Terminación:** Al finalizar el ciclo ($i = n - 1$), el invariante nos asegura que `max_profit` alberga la ganancia máxima para todo el arreglo `prices[0...n-1]`. Esto demuestra la correctitud exacta de la solución.
+### Complejidad temporal y espacial
+En la implementación principal de src/solucion.cpp la complejidad temporal es de $O(n)$ porque el arreglo se recorre una sola vez mediante un bucle lineal.En cada iteracion se realizan operaciones de costo constante, por lo que el costo total crece proporcionalmente al tamaño de la entrada.
+La complejidad espacial de esta misma funcion es $O(1)$, ya que solo se usan variables auxiliares escalares y no se reserva momoria adicional dependiente de n.
+
+### 
