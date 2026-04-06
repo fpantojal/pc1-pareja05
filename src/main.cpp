@@ -21,6 +21,6 @@ int main()
 
     printStats(optimalStats, "Optimal Solution");
     printStats(bruteForceStats, "Brute Force Solution");
-
+    
     return 0;
 }
