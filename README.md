@@ -6,28 +6,9 @@
 ### Problema asignado
 - [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
 
-### Requisitos de Construcción
-Para compilar este proyecto, necesitas tener instalado:
-* **MSYS2 (UCRT64)**
-* **GCC 15.2.0** o superior
-* **CMake 3.20+**
-* **Ninja** o **Make**
 
-### Instrucciones de Compilación y Ejecución
 
-Sigue estos pasos en tu terminal **UCRT64**:
 
-1. **Generar el sistema de construcción:**
-   ```bash
-   cmake -S . -B build
-
-2. **Compilar el proyecto:**
-   ```bash
-   cmake --build build --config Release
-
-3. **Ejecutar el programa:**
-   ```bash
-   ./build/main_app.exe
 
 ### Especificación de problema breve
 #### Especificación: Best Time to Buy and Sell Stock
@@ -85,3 +66,28 @@ Por tanto, el minimo precio observado y la mejor ganancia conocida están correc
 **Paso inductivo**: al procesar el dia i, hay 2 posibilidades.**1** Si el precio actual es mayor que `buy`, la ganancia candidata es `price[i] - buy`; al comparar con `maxProfit` conserva el mayor valor, la mejor ganancia acumulada sigue siendo correcta.**2**Si el precio actual es menor o igual que `buy`, se actualiza `buy`, preservando que `buy` sea el minimo procesad. **En ambos casos** la invariante se mantiene.
 
 El bucle recorre un numero finito de posiciones y finalza en n-1. Al terminar, por la invariante, `maxProfit` coincide con la maxima ganancia posible. Si no existe ganancia positiva, el valor permanece en 0, que es exactamente la salida requerida. 
+
+### Instrucciones de Compilación y Ejecución
+
+## Requisitos de Construcción
+Para compilar este proyecto, necesitas tener instalado:
+* **MSYS2 (UCRT64)**
+* **GCC 15.2.0** o superior
+* **CMake 3.20+**
+* **Ninja** o **Make**
+
+
+Sigue estos pasos en tu terminal **UCRT64**:
+
+1. **Generar el sistema de construcción:**
+   ```bash
+   cmake -S . -B build
+
+2. **Compilar el proyecto:**
+   ```bash
+   cmake --build build --config Release
+
+3. **Ejecutar el programa:**
+   ```bash
+   ./build/main_app.exe
+   ./build/benchmark.exe
