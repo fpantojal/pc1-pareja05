@@ -67,6 +67,9 @@ Por tanto, el minimo precio observado y la mejor ganancia conocida están correc
 
 El bucle recorre un numero finito de posiciones y finalza en n-1. Al terminar, por la invariante, `maxProfit` coincide con la maxima ganancia posible. Si no existe ganancia positiva, el valor permanece en 0, que es exactamente la salida requerida. 
 
+
+### 
+
 ### Instrucciones de Compilación y Ejecución
 
 ## Requisitos de Construcción
@@ -91,3 +94,11 @@ Sigue estos pasos en tu terminal **UCRT64**:
    ```bash
    ./build/main_app.exe
    ./build/benchmark.exe
+
+### Breve descripcion del benchmark 
+
+El benchmark compara el rendimiento de dos enfoques para el problema de ganancia máxima.
+* Genera arreglos de precios aleatorios ( de entre 0 y $10^4$) para tamaños creciendes de 1000, 5000, 10000, 50000 y 100000.
+* Para cada tamaño, ejecuta 5 pruebas.
+* Mide el tiempo promedio en microsegundos de `maxProfit` y `maxProfitBruteForce`.
+* Imprime los resultados por tamaño para ver como escala cada algoritmo.
