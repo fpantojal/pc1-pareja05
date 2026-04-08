@@ -39,8 +39,6 @@ target_link_libraries(main_app PRIVATE pc1_logic)
 # Crea el ejecutable de benchmark
 add_executable(benchmark "bench/benchmark.cpp")
 target_link_libraries(benchmark PRIVATE pc1_logic)
-add_executable(benchmark_main "bench/benchmark_main.cpp")
-target_link_libraries(benchmark_main PRIVATE pc1_logic)
 
 # Crea el ejecutable de test publico
 add_executable(test_public "public_tests/test_public.cpp")
