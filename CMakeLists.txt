@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(PC1_BestStock)
 
+set(CMAKE_CXX_STANDARD 20)
+
 # Esto crea la librería con tu lógica (lo que el profesor llama sem1_algorithms)
 add_library(pc1_logic STATIC
     "src/solution.cpp"
@@ -21,3 +23,11 @@ target_link_libraries(main_app PRIVATE pc1_logic)
 # Crea el ejecutable de benchmark
 add_executable(benchmark "bench/benchmark.cpp")
 target_link_libraries(benchmark PRIVATE pc1_logic)
+
+#Crea el ejecutable de los tests
+add_executable(test_public "public_tests/test_public.cpp")
+target_link_libraries(test_public PRIVATE pc1_logic)
+add_executable(test_internal "internal_tests/test_internal.cpp")
+target_link_libraries(test_internal PRIVATE pc1_logic)
+add_executable(test_edge_cases "internal_tests/test_edge_cases.cpp")
+target_link_libraries(test_edge_cases PRIVATE pc1_logic)

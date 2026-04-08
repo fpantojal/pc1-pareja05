@@ -1,5 +1,5 @@
 #include "vector_adapter.h"
-#include "solution.cpp"
+#include "solution.hpp"
 
 #include <iostream>
 #include <iomanip>
