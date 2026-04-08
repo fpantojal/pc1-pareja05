@@ -95,6 +95,16 @@ Sigue estos pasos en tu terminal **UCRT64**:
    ./build/main_app.exe
    ./build/benchmark.exe
 
+### Descripción de tests
+
+Los tests públicos verifican el comportamiento mínimo esperado de la solución.
+* Ejecuta una serie de arreglos predeterminados con solución conocida.
+* Verifica que `maxProfit` y `maxProfitBruteForce` devuelvan dicha solución correspendiente.
+
+Los test internos verifican comportamientos más internos de la solución.
+* `edge_cases` verifica que las funciones trabajen correctamente con casos borde, verificando su robustez.
+* `test_internal` verifica que la función `maxProfit` es más optima o igual que `maxProfitBruteForce`, demostrando que la primera es una solución más óptima.
+
 ### Breve descripcion del benchmark 
 
 El benchmark compara el rendimiento de dos enfoques para el problema de ganancia máxima.
@@ -102,3 +112,44 @@ El benchmark compara el rendimiento de dos enfoques para el problema de ganancia
 * Para cada tamaño, ejecuta 5 pruebas.
 * Mide el tiempo promedio en microsegundos de `maxProfit` y `maxProfitBruteForce`.
 * Imprime los resultados por tamaño para ver como escala cada algoritmo.
+
+### Tabla resumida de builds y resultados
+
+Con $10^4$ elementos y 5 pruebas
+
+|Build|Flag|Tiempo Alg Ingenuo ($O(n^2)$)|Tiempo Alg Óptimo ($O(n)$)|
+|----|----|----|----|
+|Depuración|`-O0`|300.15 ms|0.055 ms|
+|Depuración optimizado|`-Og`|145.2272 ms|0.0174 ms|
+|Release|`-O2`|137.477 ms|0.0182 ms|
+|Compacto|`-Os`|159.729 ms|0.0222 ms|
+
+### Observación de sanitizers
+
+Los sanitizers son utilidades adicionales al momento de compilar código para detectar problemas que usualmente son desapercibidos en una compilación normal.
+
+**ASan** (AddressSanitizer) detecta accesos de memoria no reservadas para el programa.
+* Todos los ejecutables corrieron sin observaciones
+
+**UBSan** (UndefinedBehaviorSanitizer) detecta operaciones que no están definidas (como un overflow) y pueden causar comportamientos impredecibles y/o indeseables.
+* Los ejecutables `benchmark` y `test_internal` (con arreglo de tamaño $10^5$) generaron un error de overflow al tomar tipo de datos `int`.
+
+Esto apoya la idea que dependiendo del tamaño de la entrada y sus datos se puede requerir de una estructura de datos diferente para un mejor manejo y evitar comportamientos indefinidos. Fuera de ese marco, las funciones han demostrado ser robustas.
+
+### Resumen de cobertura
+
+Es una métrica que indica el porcentaje de líneas, ramas, funciones o condiciones del programa se ejecutan. Su objetivo es saber si existe parte de código que **no se ejecuta**.
+
+### Resumen de profiling
+
+Analiza el rendimiento de un programa. Su objetivo es saber **los recursos** que se toman en cada función como tiempo, memoria, consumo energético/CPU, etc.
+
+### Microoptimización vs Algoritmo
+
+Microoptimización se refiere a ajustes en el código que permita reducir los recursos usados de la computadora al ejecutar.
+La discusión se centra entre trabajar con microoptimizaciones o con un algoritmo eficiente.
+En un caso general, **trabajar con un algoritmo eficiente como base garantiza la eficiencia** a larga escala, mientras que las microoptimizaciones en partes críticas pueden ayudar a conseguir una mayor pero en menor escala.
+
+### Uso de Copilot
+
+Se usó la herramienta de IA para pequeñas guías de código y del uso eficiente de la terminal, siempre supervisando que los cambios realizados eran los esperados y no se modificara otro archivo.
