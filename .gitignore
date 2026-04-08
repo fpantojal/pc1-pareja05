@@ -1,6 +1,7 @@
 build*/
 bin/
 obj/
+build_*/
 
 .vscode/
 .cache/
