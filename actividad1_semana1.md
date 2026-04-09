@@ -51,7 +51,10 @@
 
 #### Bloque 5 - Extensión breve con Ejercicios0
 
-1. 
+1. - Elegir un algoritmo eficiente
+   - Verificar la correctitud del programa
+   - Medir rendimiento
+   - Explorar optimizaciones más avanzadas del compilador
 2. Que usar un algoritmo apropiado para el problema puede hacer que el costo sea menor y más eficiente. No siempre usar y 'combinar' los mismos algoritmos es lo mejor.
 3. Puede evidenciar la correctitud y eficiencia de los algoritmos.
 4. Menciona limitaciones con `ASan`, `UBSan`, `TSan`, `gcov` y `gprof`
@@ -61,3 +64,10 @@
 
 Al pasar de defender la correctitud teórica a comparar implementaciones mediante evidencia experimental, el enfoque cambia de garantizar la validez abstracta a evaluar el comportamiento físico y real del código frente a los recursos del sistema. En este contexto, se comprueba que la solucion implementada satisface el problema, ademas probar que el algoritmo termina y es logicamente valido. No obstante no basta con que el problema se resuelva con correctitud, las implementaciones con evidencia experimental nos ayudan a tener una nocion del comportamiento asintotico, esto no solo depende de la logica, pudimos comprobar que el como gestiona la memoria la estructura de datos elegida ( asignacionde espacio, la contiguidad y la localidad de cache).
 
+### Autoevaluación
+
+* **Qué podemos defender con seguridad:** El análisis de algoritmos es necesario para garantizar su calidad y poder hacerlo escalable a aplicaciones de la vida real.
+
+* **Qué todavía confundimos:**: Ciertas características abstractas de los algoritmos esenciales que caracterizan su eficiencia y algunas optimizaciones del compilador.
+
+* **Qué evidencia usaríamos en una sustentación:**: Benchmarks intensivos, análisis algorítmico y certificadores de calidad como sanitizers.
